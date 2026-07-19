@@ -9,7 +9,7 @@ void main() {
    Account Account1 = new Account(User1);
    Account Account2 = new Account(User2);
 
-   Account1.credit(100.00f);
+   Account1.credit(new BigDecimal("100.00"));
 
    bank.saveAccount(Account1);
    bank.saveAccount(Account2);

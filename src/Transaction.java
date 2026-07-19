@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -5,14 +6,14 @@ public class Transaction {
     private final String transactionId;
     private final String sourceAccountId;
     private final String destinationAccountId;
-    private final Float amount;
+    private final BigDecimal amount;
     private final LocalDateTime timeStamp;
 
     public Transaction(Account sender, Account receiver, Float transferAmount) {
         //Extracting Values
         this.sourceAccountId = sender.getAccountId();
         this.destinationAccountId = receiver.getAccountId();
-        this.amount = transferAmount;
+        this.amount = BigDecimal.valueOf(transferAmount);
 
         //Validation of values amount
         if (transferAmount <= 0) {
@@ -32,7 +33,7 @@ public class Transaction {
     public String getTransactionId() {return this.transactionId;}
     public String getSourceAccountId() {return this.sourceAccountId;}
     public String getDestinationAccountId() {return this.destinationAccountId;}
-    public Float getAmount() {return this.amount;}
+    public BigDecimal getAmount() {return this.amount;}
     public LocalDateTime getTimeStamp() {return this.timeStamp;}
 
     @Override

@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,8 +27,8 @@ public class BankService {
         if (receiver == null) {
             throw new IllegalArgumentException("Destination Account ID is null. ID: " + destinationId);}
 
-        sender.debit(amount);
-        receiver.credit(amount);
+        sender.debit(BigDecimal.valueOf(amount));
+        receiver.credit(BigDecimal.valueOf(amount));
 
         return new Transaction(sender, receiver, amount);
     }

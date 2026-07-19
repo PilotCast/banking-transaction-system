@@ -1,9 +1,11 @@
 import java.util.UUID;
+import java.math.BigDecimal;
+
 
 public class Account {
     //UserId to mirror ownerId
     String ownerId;
-    Float balance;
+    BigDecimal balance;
   //final//
     final String accountId;
 
@@ -12,33 +14,33 @@ public class Account {
 
         this.accountId = "ACC" + UUID.randomUUID().toString().substring(0, 8);
 
-        this.balance = (float)0;
+        this.balance = new BigDecimal("0.00");
 
     }
 
     //Debit / Withdrawing money
-    public void debit(Float debitAmount) {
-        if (debitAmount <= 0) {
+    public void debit(BigDecimal debitAmount) {
+        if (debitAmount  == null || debitAmount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException ("Debit amount must be positive");
         }
-        if (this.balance < debitAmount) {
+        if (this.balance.compareTo(debitAmount) < 0) {
             throw new IllegalArgumentException("Insufficient funds for transaction");
         }
-        this.balance -= debitAmount;
+        this.balance = this.balance.subtract(debitAmount);
     }
 
     //Credit / Depositing Money
-    public void credit(Float creditAmount) {
-        if (creditAmount <= 0) {
+    public void credit(BigDecimal creditAmount) {
+        if (creditAmount == null || creditAmount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalArgumentException ("Debit amount must be positive");
         }
-        this.balance += creditAmount;
+        this.balance = this.balance.add(creditAmount);
     }
 
     //Getters
     String getAccountId() {
         return this.accountId; }
-    Float getAccountBalance() {
+    BigDecimal getAccountBalance() {
         return this.balance;
     }
 
