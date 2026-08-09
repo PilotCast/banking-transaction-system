@@ -15,3 +15,4 @@ A lightweight terminal-based java application designed to facilitate core bankin
 
 [2026-07-18] - Refactored fields from float to BigDecimal across core classes to ensure quantitative integrity.
 
+[2026-07-25] - Refactored the monolithic `Transaction` model into two specialized immutable record models (`Transaction` and `LedgerEntry`), to better ensure data integrity and separation of concerns when generating double entry records. The `ledgerEntry` model generates records concerning a single account, while `Transaction` now handles making the header record containing both accounts in a transfer transaction. 
