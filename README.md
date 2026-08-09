@@ -12,5 +12,6 @@ A lightweight terminal-based java application designed to facilitate core bankin
 [2026-07-17] - Initial Project Launch & Git Setup
 *   Migrated core backend Java logic (`Main`, `Account`, `User`, `Transaction` `BankService`) to a local, non-syncing workspace on the SSD (`C:\Java-Projects`).
 *   Initialized local Git repository and successfully pushed the codebase live to GitHubTr.
-     
-`
+
+[2026-07-18] - Refactored fields from float to BigDecimal across core classes to ensure quantitative integrity.
+
